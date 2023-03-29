@@ -11,47 +11,27 @@ namespace ConsoleApp15
         static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
-            Console.Write("Введите количество элементов в массиве: ");
-            int n = int.Parse(Console.ReadLine());
-            int[] arr = new int[n];
-            Random rnd = new Random();
-            for (int i = 0; i < n; i++)
+            double[] arr = new double[12];
+            Console.WriteLine("Введите элементы массива:");
+            for (int i = 0; i < 12; i++)
             {
-                arr[i] = rnd.Next(1, 81);
+                Console.Write($"arr[{i}] = ");
+                arr[i] = double.Parse(Console.ReadLine());
             }
-            Console.WriteLine("Исходный массив: ");
-            PrintArray(arr);
-            int minIndex = 0;
-            int maxIndex = 0;
-            for (int i = 1; i < n; i++)
-            {
-                if (arr[i] < arr[minIndex])
-                {
-                    minIndex = i;
-                }
-
-                if (arr[i] > arr[maxIndex])
-                {
-                    maxIndex = i;
-                }
-            }
-            Console.WriteLine("Минимальный элемент массива: " + arr[minIndex]);
-            Console.WriteLine("Максимальный элемент массива: " + arr[maxIndex]);
-            int temp = arr[minIndex];
-            arr[minIndex] = arr[maxIndex];
-            arr[maxIndex] = temp;
-            Console.WriteLine("Массив после обмена: ");
-            PrintArray(arr);
-
-            Console.ReadLine();
-        }
-        static void PrintArray(int[] arr)
-        {
-            foreach (int item in arr)
+            Array.Sort(arr);
+            Array.Reverse(arr);
+            Console.WriteLine("Массив в порядке убывания: ");
+            foreach (double item in arr)
             {
                 Console.Write(item + " ");
             }
             Console.WriteLine();
+            double min = arr[arr.Length - 1];
+            double max = arr[0];
+            double sum = min + max;
+            Console.WriteLine($"Минимальный элемент массива: {min}");
+            Console.WriteLine($"Максимальный элемент массива: {max}");
+            Console.WriteLine($"Сумма максимального и минимального элементов: {sum}");
             Console.ReadLine();
         }
     }
