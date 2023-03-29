@@ -11,27 +11,22 @@ namespace ConsoleApp15
         static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
-            double[] arr = new double[12];
+            double[] arr = new double[14];
             Console.WriteLine("Введите элементы массива:");
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < 14; i++)
             {
                 Console.Write($"arr[{i}] = ");
                 arr[i] = double.Parse(Console.ReadLine());
             }
-            Array.Sort(arr);
-            Array.Reverse(arr);
-            Console.WriteLine("Массив в порядке убывания: ");
+            Array.Sort(arr, 0, 7);
+            Array.Sort(arr, 7, 7);
+            Array.Reverse(arr, 7, 7);
+            Console.WriteLine("Массив с сортировкой:");
             foreach (double item in arr)
             {
                 Console.Write(item + " ");
             }
             Console.WriteLine();
-            double min = arr[arr.Length - 1];
-            double max = arr[0];
-            double sum = min + max;
-            Console.WriteLine($"Минимальный элемент массива: {min}");
-            Console.WriteLine($"Максимальный элемент массива: {max}");
-            Console.WriteLine($"Сумма максимального и минимального элементов: {sum}");
             Console.ReadLine();
         }
     }
